@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchUser displays an input field 1`] = `
+<Fragment>
+  <input
+    name="name"
+    type="text"
+  />
+  <button
+    name="button"
+    type="button"
+  >
+    Search for user 
+  </button>
+</Fragment>
+`;
