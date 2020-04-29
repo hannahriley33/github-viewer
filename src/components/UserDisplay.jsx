@@ -12,8 +12,8 @@ const UserDisplay = ({ name, followers, following, url }) => (
 
 UserDisplay.propTypes = {
   name: PropTypes.string.isRequired,
-  followers: PropTypes.string.isRequired,
-  following: PropTypes.string.isRequired,
+  followers: PropTypes.number.isRequired,
+  following: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired
 };
 

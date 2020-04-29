@@ -4,21 +4,21 @@ import { fetchRepos } from '../../services/fetchRepos.js';
 
 export default class AllRepos extends Component {
   state = {
-    characters: [],
+    repos: [],
     loading: true,
   }
 
   componentDidMount() {
-    fetchCharacters()
-      .then(characters => this.setState({ characters, loading: false }));
+    fetchRepos()
+      .then(repos => this.setState({ repos, loading: false }));
   }
 
   render() {
-    const { characters, loading } = this.state;
+    const { repos, loading } = this.state;
     if(loading) return <h1>Loading</h1>;
 
     return (
-      <Characters characters={characters} />
+      <RepoList repos={repos} />
     );
   }
 }

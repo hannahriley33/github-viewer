@@ -1,32 +1,41 @@
 import React, { Component } from 'react';
 import SearchUser from '../../components/SearchUser.jsx';
-import RepoList from '../../components/RepoList.jsx';
-import { fetchRepos } from '../../services/fetchRepos.js';
-import { githubApi } from '../../services/githubApi.js';
+import UserDisplay from '../../components/UserDisplay.jsx';
+import { fetchUser } from '../../services/fetchUser.js';
 
 export default class UserContainer extends Component {
-  
   state = {
-    userName: '',
-    repos: []
+    userDisplay: {},
+    userName: 'hannahriley33',
+    loading: true
+  }
+  
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
+  };
+
+  handleSubmit = (event) => { 
+    event.preventDefault();
+    this.setState({ loading: true });
+    fetchUser(this.state.userName)
+      .then(userDisplay => this.setState({ userDisplay, loading: false }));
+  };
+
+  componentDidMount() {
+    fetchUser(this.state.userName)
+      .then(userDisplay => this.setState({ userDisplay, loading: false }));
   }
       
-      handleSubmit = ({ target }) => {
-        fetchRepos()
-          .then(repos => this.setState({ repos }));
-      
-        githubApi()
-          .then(userName => this.setState({ userName }));
-        this.setState({ [target.name]: target.value });
-      };
-      
-      render() {
-        const { userName, repos } = this.state;
-        return (
-          <>
-            <SearchUser username={ userName } />
-            <RepoList repos={ repos } />
-          </>
-        );
-      }
+  render() {
+    const { userName, userDisplay, loading } = this.state;
+    if(loading) 
+      return (<h1>...still loading</h1>);
+
+    return (
+      <>
+        <SearchUser userName={ userName } handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+        <UserDisplay {...userDisplay} />
+      </>
+    );
+  }
 }
