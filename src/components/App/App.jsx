@@ -1,6 +1,7 @@
 import React from 'react';
-import SearchUser from '../SearchUser.jsx';
+import UserContainer from '../../containers/searchUser/UserContainer.jsx';
+
 
 export default function App() {
-  return <SearchUser /> ;
+  return  <UserContainer />;
 }

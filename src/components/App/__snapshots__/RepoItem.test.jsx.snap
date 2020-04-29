@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepoItem matches a snapshot 1`] = `
+<a
+  href="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+>
+  Rick-Sanchez-App
+</a>
+`;
